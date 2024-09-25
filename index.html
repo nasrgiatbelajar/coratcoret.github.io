@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Geser</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #fdf6f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            margin: 20px 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff66b2;
+            animation: bounce 2s infinite;
+        }
+        h2 {
+            font-size: 2em;
+            color: #ff99cc;
+        }
+        h3 {
+            font-size: 1.5em;
+            color: #ffcccc;
+        }
+        p {
+            font-size: 1.2em;
+            color: #666;
+        }
+        a {
+            text-decoration: none;
+            color: #ff66b2;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #ff3399;
+        }
+        img {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        .awan {
+            background: url('https://abs.twimg.com/images/themes/theme1/bg.png') center top repeat-x;
+            background-size: cover;
+            animation: awan-animasi 20s linear infinite;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin: 20px auto;
+            width: 80%;
+            display: inline-block;
+        }
+        @keyframes awan-animasi {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 100% 0;
+            }
+        }
+        .slider-menu {
+            position: fixed;
+            top: 0;
+            left: 0; /* Position at the left edge */
+            width: 250px; /* Same width as before */
+            height: 100%;
+            background-color: #b3e0ff; /* Light blue background */
+            color: #ff66b2; /* Pink text color */
+            transition: transform 0.3s ease;
+            transform: translateX(-100%); /* Start hidden off-screen */
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+            z-index: 1000; /* Ensure it appears above other content */
+        }
+        .slider-menu.open {
+            transform: translateX(0); /* Slide in from the left */
+        }
+        .menu-button, .close-button {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin: 10px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001; /* Ensure it is above the menu */
+        }
+        .menu-button:hover, .close-button:hover {
+            background-color: #555;
+        }
+        .menu-item {
+            margin: 10px 0;
+        }
+        .menu-item a {
+            color: #ff66b2; /* Pink color for links in the menu */
+        }
+        .menu-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+    <div class="slider-menu" id="sliderMenu">
+        <button class="close-button" onclick="toggleMenu()">× Tutup</button>
+        <h2>Menu</h2>
+        <div class="menu-item"><a href="momentdifyka.html">moment difyka</a></div>
+        <div class="menu-item"><a href="novelfyka.html">novel pdf</a></div>
+        <div class="menu-item"><a href="video.html">video fyka 3</a></div>
+    </div>
+    <div class="awan" onclick="closeMenu()">
+        <h1>❤️ Aku pacarnya Fyka ❤️</h1>
+        <h1>💔 Difyka Lagi Sakit 💔</h1>
+        <h2>Difyka harus minum obat dan makan yang banyak</h2>
+        <h3>Semoga Difyka cepat sembuh!</h3>
+        <hr>
+        <p>Ini adalah akun IG-nya Difyka:</p>
+        <a href="https://www.instagram.com/difykaaa/" target="_blank">Klik di sini</a>
+        <p>Ini foto Difyka:</p>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczM_GMlRLS-XdsDSIFYG7KUVpJsgC9bFtf5w84-jzp66C6k9QLNmeWaeq7_pDG8cDzKH0yX-dmWBj7KuMM5Kd1GleN7TojnDopJte32HVTG4rhAdYge3qSO_lQnSp09QFjyVBg7kqN3Vsa3DGWQx1c4=w618-h772-s-no-gm?authuser=0" alt="Foto Difyka" width="200" height="250">
+        <h1>CANTIK KAN!!!!</h1>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('sliderMenu');
+            menu.classList.toggle('open');
+        }
+
+        function closeMenu(event) {
+            // Check if the click is outside the slider menu and not the menu button
+            if (event.target.closest('.slider-menu') === null && event.target.closest('.menu-button') === null) {
+                const menu = document.getElementById('sliderMenu');
+                if (menu.classList.contains('open')) {
+                    menu.classList.remove('open');
+                }
+            }
+        }
+
+        // Attach event listener to the document for clicks outside the menu
+        document.addEventListener('click', closeMenu);
+    </script>
+</body>
+</html>
